@@ -1,7 +1,5 @@
-
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 public class Main {
@@ -13,9 +11,15 @@ public class Main {
         Main main = new Main();
         main.run();
     }
-    private void run() {
-        try {
 
+    private void run() {
+        getData();
+        input();
+
+    }
+
+    private void getData() {
+        try {
             FileReader fr = new FileReader(filePath);
             BufferedReader br = new BufferedReader(fr);
 
@@ -28,9 +32,6 @@ public class Main {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        input();
-
     }
 
     private void input() {
@@ -48,7 +49,8 @@ public class Main {
                 }
             }
             System.out.print("Continue? (y/n): ");
-            String continueInput = sc.nextLine();;
+            String continueInput = sc.nextLine();
+            ;
             if (continueInput.equalsIgnoreCase("n")) {
                 isRunning = false;
             } else if (continueInput.equalsIgnoreCase("y")) {
