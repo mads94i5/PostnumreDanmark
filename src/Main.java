@@ -38,16 +38,20 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean isRunning = true;
         while (isRunning) {
-            while (input.length() != 4 && !tryParseInt(input)) {
+            while (!tryParseInt(input)) {
                 System.out.print("Indtast postnummer: ");
                 input = sc.nextLine();
-                System.out.println(getCity(input));
+                if (getCity(input) != null) {
+                    System.out.println(getCity(input));
+                } else {
+                    System.out.println("No such zipcode.");
+                }
             }
             System.out.print("Continue? (y/n): ");
             String continueInput = sc.nextLine();;
-            if (continueInput.equals("n")) {
+            if (continueInput.equalsIgnoreCase("n")) {
                 isRunning = false;
-            } else if (continueInput.equals("y")) {
+            } else if (continueInput.equalsIgnoreCase("y")) {
                 input = "";
             }
         }
